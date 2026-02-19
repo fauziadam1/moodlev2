@@ -4,13 +4,14 @@ import { useAuthUser } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { Spinner } from "@/components/ui/spinner";
 import { PropsWithChildren, useEffect } from "react";
+import { Header } from "@/components/header";
 
 export default function AdminLayout({ children }: PropsWithChildren) {
   const { user, isLoading } = useAuthUser();
   const router = useRouter();
 
   if (user && user.role !== "admin") {
-    router.push('/')
+    router.push("/");
   }
 
   if (isLoading) {
@@ -21,5 +22,10 @@ export default function AdminLayout({ children }: PropsWithChildren) {
     );
   }
 
-  return children;
+  return (
+    <div>
+      <Header />
+      {children}
+    </div>
+  );
 }

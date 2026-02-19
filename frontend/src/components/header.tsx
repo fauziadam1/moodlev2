@@ -21,13 +21,13 @@ export function Header() {
         </Link>
         <NavigationMenu className="list-none font-semibold space-x-5">
           <NavigationMenuItem>
-            <NavigationMenuLink>
-              Dashboard
+            <NavigationMenuLink href="/">
+              Home
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink>
-              My Course
+              Course
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenu>

@@ -2,9 +2,6 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import { useAuthUser } from "@/lib/auth";
-import { Header } from "@/components/header";
-import { Spinner } from "@/components/ui/spinner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} antialiased`}>
-        <Header />
         {children}
         <Toaster richColors />
       </body>

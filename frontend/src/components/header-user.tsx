@@ -67,12 +67,14 @@ export function HeaderUser({
                   </Link>
                 </DropdownMenuItem>
               )}
-              <DropdownMenuItem asChild>
-                <Link href={"/course"}>
-                  <BookMarked />
-                  My Course
-                </Link>
-              </DropdownMenuItem>
+              {user && (
+                <DropdownMenuItem asChild>
+                  <Link href={"/course"}>
+                    <BookMarked />
+                    My Course
+                  </Link>
+                </DropdownMenuItem>
+              )}
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem
