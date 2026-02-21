@@ -17,7 +17,7 @@ export default function Home() {
   const { user } = useAuthUser();
 
   return (
-    <div>
+    <div className="space-y-5">
       <div className="border-b bg-gray-50">
         <div className="container px-10 py-15 mx-auto space-y-5">
           <div className="space-y-2">
@@ -46,7 +46,10 @@ export default function Home() {
           )}
         </div>
       </div>
-      <CourseListUser />
+      <div className="container mx-auto px-10 space-y-5">
+        <h1 className="text-2xl font-bold">Daftar Course</h1>
+        <CourseListUser />
+      </div>
     </div>
   );
 }

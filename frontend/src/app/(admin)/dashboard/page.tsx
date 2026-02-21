@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { CourseList } from "@/components/course-list-admin";
+import { CourseListAdmin } from "@/components/course-list-admin";
 
 export const metadata: Metadata = {
   title: "Admin Dashboard",
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function RegisterPage() {
   return (
     <div className="w-full h-screen flex items-start justify-center mt-10">
-      <CourseList />
+      <CourseListAdmin />
     </div>
   );
 }

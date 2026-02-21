@@ -30,7 +30,7 @@ export function Header() {
 
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link href="/courses">Course</Link>
+                <Link href="/course">Course</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>

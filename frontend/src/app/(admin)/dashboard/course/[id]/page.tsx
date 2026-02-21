@@ -37,24 +37,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import z from "zod";
+import Link from "next/link";
 import { toast } from "sonner";
 import { api } from "@/lib/axios";
 import { useForm } from "react-hook-form";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-
 import { SetAdd } from "@/components/set-add";
 import { LessonAdd } from "@/components/lesson-add";
 import { QuizAdd } from "@/components/quiz-add";
-
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EllipsisVertical, Pencil, Trash2Icon } from "lucide-react";
-
-//////////////////// TYPES ////////////////////
 
 type LessonItem = {
   type: "lesson";
@@ -89,7 +85,7 @@ type Course = {
   is_published: boolean;
 };
 
-export default function CourseDetailPageAdmin() {
+export default function CourseDetailAdminPage() {
   const params = useParams<{ id: string }>();
   const CourseId = params.id;
 
@@ -189,6 +185,7 @@ export default function CourseDetailPageAdmin() {
 
   return (
     <div className="container px-10 mx-auto mt-10">
+      <div></div>
       <div className="flex gap-10">
         <div className="flex-1 space-y-5">
           {course && (
@@ -215,15 +212,14 @@ export default function CourseDetailPageAdmin() {
                     {activeSet.items.map((item) => (
                       <div
                         key={`${item.type}-${item.id}`}
-                        className="border rounded-lg p-4 bg-gray-50"
                       >
                         {item.type === "lesson" && (
-                          <>
-                            <h3 className="font-semibold">{item.title}</h3>
+                          <div>
+                            <h1 className="font-semibold">{item.title}</h1>
                             <p className="text-gray-500 text-justify whitespace-pre-line">
                               {item.content}
                             </p>
-                          </>
+                          </div>
                         )}
                         {item.type === "quiz" && (
                           <>
@@ -235,7 +231,9 @@ export default function CourseDetailPageAdmin() {
                                 {item.description}
                               </p>
                             )}
-                            <Button className="mt-2">Kerjakan Quiz</Button>
+                            <Link href={`/dashboard/quiz/${item.id}`}>
+                              <Button className="mt-2">Kelola Quiz</Button>
+                            </Link>
                           </>
                         )}
                       </div>
@@ -250,11 +248,10 @@ export default function CourseDetailPageAdmin() {
             )}
           </div>
         </div>
-        <div className="w-[350px] border rounded-xl p-4 space-y-5 bg-gray-50">
+        <div className="w-87.5 border rounded-xl p-4 space-y-5 bg-gray-50">
           <div className="flex justify-end">
             <SetAdd courseId={CourseId} onSuccess={fetchSets} />
           </div>
-
           <div className="space-y-3">
             {sets.map((set) => (
               <div
@@ -332,6 +329,7 @@ export default function CourseDetailPageAdmin() {
                         <AlertDialogTrigger asChild>
                           <DropdownMenuItem
                             onSelect={(e) => e.preventDefault()}
+                            variant="destructive"
                           >
                             {isDelLoading ? (
                               <Spinner />

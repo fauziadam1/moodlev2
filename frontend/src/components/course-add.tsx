@@ -27,11 +27,7 @@ import { api } from "@/lib/axios";
 import { toast } from "sonner";
 import { PlusIcon } from "lucide-react";
 
-export function CourseAdd({
-  onSuccess,
-}: {
-  onSuccess?: () => void;
-}) {
+export function CourseAdd({ onSuccess }: { onSuccess?: () => void }) {
   const [isLoading, SetLoading] = useState(false);
 
   const formCourse = z.object({
@@ -57,6 +53,7 @@ export function CourseAdd({
       await api.post("/api/course", data);
 
       toast.success("Course created");
+      SetLoading(false);
       onSuccess?.();
       form.reset();
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

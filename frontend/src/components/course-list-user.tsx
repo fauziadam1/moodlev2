@@ -71,10 +71,8 @@ export function CourseListUser() {
   };
 
   return (
-    <div className="container px-10 py-10 mx-auto">
+    <>
       <div className="space-y-6">
-        <h1 className="text-2xl font-bold">Daftar Course</h1>
-
         {isLoading ? (
           <div className="flex items-center justify-center h-64">
             <Spinner className="size-8" />
@@ -105,7 +103,7 @@ export function CourseListUser() {
                   {course.enrolled ? (
                     <Link href={`/course/${course.id}`} className="w-full">
                       <Button className="w-full bg-blue-500">
-                        Lihat Course
+                        Lanjut belajar
                       </Button>
                     </Link>
                   ) : (
@@ -129,6 +127,6 @@ export function CourseListUser() {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }

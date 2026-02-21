@@ -5,7 +5,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <>
       <Header />
-      {children}
+      <div className="py-10">{children}</div>
     </>
   );
 }

@@ -63,7 +63,7 @@ type Course = {
   created_at: string;
 };
 
-export function CourseList() {
+export function CourseListAdmin() {
   const [isLoading, SetLoading] = useState(false);
   const [isEditLoading, SetEditLoading] = useState(false);
   const [isPubLoading, setPubLoading] = useState<number | null>(null);
@@ -197,8 +197,20 @@ export function CourseList() {
                       "Publish"
                     )}
                   </Button>
-                  <Button className="flex-1 rounded-xl" variant="outline">
-                    <Link href={`/dashboard/${course.id}`}>View</Link>
+                  <Button
+                    className="flex-1 rounded-xl"
+                    variant="outline"
+                    asChild
+                  >
+                    <Link
+                      href={
+                        course.is_published
+                          ? `/course/${course.id}`
+                          : `/dashboard/course/${course.id}` 
+                      }
+                    >
+                      View
+                    </Link>
                   </Button>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
